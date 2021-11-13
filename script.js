@@ -41,9 +41,7 @@ async function getPhotos() {
 
 // Check to see if scrolling near bottom of page, Load more photos
 window.addEventListener("scroll", () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-  if (scrollTop + clientHeight >= scrollHeight - 5) {
+  if (window.innerHeight + window.scrollY >= body.offsetHeight - 100) {
     const images = document.querySelectorAll(".js-gallery-img");
     if (imgArr.length === images.length) return;
     renderPhotos(imgArr, images.length);
@@ -51,9 +49,7 @@ window.addEventListener("scroll", () => {
 });
 
 body.addEventListener("touchmove", (e) => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-  if (scrollTop + clientHeight >= scrollHeight - 150) {
+  if (window.innerHeight + window.scrollY >= body.offsetHeight - 100) {
     const images = document.querySelectorAll(".js-gallery-img");
     if (imgArr.length === images.length) return;
     renderPhotos(imgArr, images.length);
