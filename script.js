@@ -53,7 +53,7 @@ window.addEventListener("scroll", () => {
 body.addEventListener("touchmove", (e) => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-  if (scrollTop + clientHeight >= scrollHeight - 5) {
+  if (scrollTop + clientHeight >= scrollHeight - 150) {
     const images = document.querySelectorAll(".js-gallery-img");
     if (imgArr.length === images.length) return;
     renderPhotos(imgArr, images.length);
