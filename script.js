@@ -1,3 +1,4 @@
+const body = document.body;
 const imgContainer = document.getElementById("imgContainer");
 const loader = document.getElementById("loader");
 const apiKey = "12363929-9db4aedf50ea881a1245ac8b5";
@@ -40,6 +41,16 @@ async function getPhotos() {
 
 // Check to see if scrolling near bottom of page, Load more photos
 window.addEventListener("scroll", () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+  if (scrollTop + clientHeight >= scrollHeight - 5) {
+    const images = document.querySelectorAll(".js-gallery-img");
+    if (imgArr.length === images.length) return;
+    renderPhotos(imgArr, images.length);
+  }
+});
+
+body.addEventListener("touchmove", (e) => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
   if (scrollTop + clientHeight >= scrollHeight - 5) {
